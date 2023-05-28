@@ -5,13 +5,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
-    private static final int NUMBER_OF_COMBINATIONS = 3;
+    private static final int COMBINATION_LENGTH = 3;
 
     public static void main(String[] args) throws IOException {
-        List<List<Nodes>> tripleNodesCombinations = TripleCombinations.getTripleCombinations(NUMBER_OF_COMBINATIONS);
+        List<List<Nodes>> tripleNodesCombinations = TripleCombinations.getTripleCombinations(COMBINATION_LENGTH);
 
         //Prints every possible combination of nodes
-        System.out.println("Combination of " + NUMBER_OF_COMBINATIONS + ":");
+        System.out.println("Combination of " + COMBINATION_LENGTH + ":");
         for (List<Nodes> innerList : tripleNodesCombinations) {
             List<String> nodeNames = new ArrayList<>();
             for (Nodes node : innerList) {

@@ -10,19 +10,19 @@ import java.util.List;
 
 public class TripleCombinations {
 
-    public static List<List<Integer>> findTripleCombinations(int n, int numberOfCombinations) {
+    public static List<List<Integer>> findTripleCombinations(int n, int combinationLength) {
         List<List<Integer>> result = new ArrayList<>();
         List<Integer> combination = new ArrayList<>();
 
         // Generate all triple combinations using backtracking
-        backtrack(result, combination, n, numberOfCombinations,0);
+        backtrack(result, combination, n, combinationLength,0);
         return result;
     }
 
-    private static void backtrack(List<List<Integer>> result, List<Integer> combination, int n, int numberOfCombinations, int start) {
+    private static void backtrack(List<List<Integer>> result, List<Integer> combination, int n, int combinationLength, int start) {
 
         // Base case: If combination has reached size 3, add it to the result
-        if (combination.size() == numberOfCombinations) {
+        if (combination.size() == combinationLength) {
             result.add(new ArrayList<>(combination));
             return;
         }
@@ -33,14 +33,14 @@ public class TripleCombinations {
             combination.add(i);
 
             // Recursively generate combinations with the next index
-            backtrack(result, combination, n, numberOfCombinations,i + 1);
+            backtrack(result, combination, n, combinationLength,i + 1);
 
             // Remove the current element from the combination for backtracking
             combination.remove(combination.size() - 1);
         }
     }
 
-    public static List<List<Nodes>> getTripleCombinations(int numberOfCombinations) throws IOException {
+    public static List<List<Nodes>> getTripleCombinations(int combinationLength) throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
         int numberOfNodes = 0, i=0;
 
@@ -56,7 +56,7 @@ public class TripleCombinations {
             }
         }
 
-        List<List<Integer>> combinations = findTripleCombinations(numberOfNodes, numberOfCombinations);
+        List<List<Integer>> combinations = findTripleCombinations(numberOfNodes, combinationLength);
         List<List<Nodes>> tripleNodesCombinations = new ArrayList<>();
 
         // Store the combinations in the tripleNodesCombinations list,
