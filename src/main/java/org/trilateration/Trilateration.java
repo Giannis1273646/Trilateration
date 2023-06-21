@@ -1,13 +1,12 @@
 package org.trilateration;
 
 import java.awt.geom.Point2D;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class Trilateration {
-    public static void trilateration(List<Nodes> nodesNames) throws IOException {
+    public static Point2D.Double trilateration(List<Nodes> nodesNames){
         //Initialisation of variables
         Point2D.Double pointA = new Point2D.Double();
         Point2D.Double pointB = new Point2D.Double();
@@ -42,6 +41,9 @@ public class Trilateration {
 
         // Print the coordinates of the unknown point
         System.out.println("Coordinates of the unknown point: (" + unknownPoint.x + ", " + unknownPoint.y + ")");
+
+        // Return the unknown point
+        return unknownPoint;
     }
 
     private static Point2D.Double trilateration(Point2D.Double pointA, Point2D.Double pointB, Point2D.Double pointC,
